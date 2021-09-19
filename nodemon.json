@@ -1,0 +1,4 @@
+{
+  "exec": "babel-node -x .ts",
+  "ext": "ts"
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+
+    "target": "esnext",
+    "module": "esnext",
+
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
