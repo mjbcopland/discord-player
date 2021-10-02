@@ -79,6 +79,11 @@ class Player {
         }
       });
 
+      this.subscription.player.on("error", (error) => {
+        console.error(error);
+        void this.subscription?.player.stop(true); // fixme: skipping
+      });
+
       this.subscription.connection.on("stateChange", async (prev, next) => {
         if (next.status === VoiceConnectionStatus.Disconnected) {
           if (next.reason === VoiceConnectionDisconnectReason.WebSocketClose && next.closeCode === 4014) {
@@ -153,7 +158,6 @@ class Player {
       const query = this.queue.shift();
       if (query != null) {
         const results = await youtube.search(query, { limit: 1, type: "video" });
-        console.log(await ytdl.getBasicInfo(asNonNullable(head(results)).url));
         const stream = await ytdl(asNonNullable(head(results)).url);
         const resource = createAudioResource(stream, { inputType: StreamType.Opus });
 
